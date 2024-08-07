@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id      Int     @id
+  name    String?
+  country String
+  decals  Decal[]
+}
+
+model Decal {
+  id          Int     @id
+  create_time DateTime
+  title       String
+  comment     String
+  status      Int
+  open        Int
+  keyword     String
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  tags Tag[]
+}
+
+model Tag {
+  decal   Decal @relation(fields: [decalId], references: [id])
+  decalId Int
+  tag     String
+
+  @@id([decalId, tag])
+}
