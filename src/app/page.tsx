@@ -5,6 +5,12 @@ export default function Home() {
     <main className="relative bg-dark-gray min-h-screen h-full text-white">
       <div className="sticky top-0 z-50 bg-dark-gray w-full border-b-2 border-b-border-gray">
         <div className="container py-4 flex justify-between">
+          <div>
+            Search
+          </div>
+          <div>
+            Exit
+          </div>
         </div>
       </div>
       <div className="container">
