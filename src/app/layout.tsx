@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Decal index",
-  description: "Search for automotive decals",
+  title: "Gran Turismo Sport - Decals",
+  description: "Search the scraped GT Sport decal database",
 };
 
 export default function RootLayout({
