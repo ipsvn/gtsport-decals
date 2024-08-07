@@ -9,10 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        'dark-gray': '#232323',
+        'light-gray': '#CBCBCB',
+        'border-gray': '#3D3D3D',
+      },
+      aspectRatio: {
+        '3/2': '3 / 2',
+      }
     },
   },
   plugins: [],
