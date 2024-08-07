@@ -1,5 +1,3 @@
-import { Decal } from "@prisma/client";
-
 export function getDecalImageUrl(decalId: BigInt | string): string {
     
     const idString = decalId.toString();

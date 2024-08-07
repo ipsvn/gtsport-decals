@@ -39,8 +39,8 @@ async function main() {
 
         const tags: string[] = json.tags;
 
-        await prisma.decal.create({
-          data: {
+        await prisma.decal.upsert({
+          create: {
             id: decalId,
             create_time: new Date(json.create_time),
             title: json.title,
@@ -56,6 +56,12 @@ async function main() {
             user: {
               connect: user
             }
+          },
+          update: {
+            
+          },
+          where: {
+            id: decalId
           }
         });
 

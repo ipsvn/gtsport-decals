@@ -22,7 +22,7 @@ model Decal {
   id          BigInt   @id
   create_time DateTime
   title       String
-  comment     String
+  comment     String?
   status      Int
   open        Int
   keyword     String
