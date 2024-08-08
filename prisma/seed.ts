@@ -1,12 +1,14 @@
 import { PrismaClient } from '@prisma/client'
 
-const { glob, readFile } = require('node:fs/promises');
+const { Glob } = require("glob");
+const { readFile } = require('node:fs/promises');
 
 const prisma = new PrismaClient()
 
 async function main() {
 
-    for await (const match of glob('data/**/*.json')) {
+    const dataGlob = new Glob('data/**/*.json', {});
+    for await (const match of dataGlob) {
 
         console.log(`parse ${match}`)
         const file = await readFile(match, { encoding: 'utf8' });
