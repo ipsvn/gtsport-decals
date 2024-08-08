@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native"]
 }
 
 datasource db {
@@ -21,7 +22,7 @@ model User {
 model Decal {
   id          BigInt   @id
   create_time DateTime
-  title       String
+  title       String?
   comment     String?
   status      Int
   open        Int
