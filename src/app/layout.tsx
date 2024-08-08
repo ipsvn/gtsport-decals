@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Gran Turismo Sport - Decals",
-  description: "Search the scraped GT Sport decal database",
+  description: "Search the GT Sport decal database",
 };
 
 export default function RootLayout({
