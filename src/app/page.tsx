@@ -22,7 +22,7 @@ export default async function Page(
             </div>
             <div className="container">
                 <div className="flex justify-center">
-                    <div className="hidden md:block w-1/4 pr-8 border-r-2 border-r-border-gray py-4">
+                    {/* <div className="hidden md:block w-1/4 pr-8 border-r-2 border-r-border-gray py-4">
                         <h2 className="text-lg font-bold mb-4">Filters</h2>
                         <div className="mb-4">
                             <label className="block text-sm font-medium mb-2">Creator</label>
@@ -35,10 +35,10 @@ export default async function Page(
                                 <input type="text" id="upload-date-end" name="upload-date-end" className="border-border-gray border-2 bg-dark-gray rounded py-2 px-3 w-full" placeholder="01/01/2024" />
                             </div>
                         </div>
-                    </div>
-                    <div className="w-3/4 pl-8 py-4">
+                    </div> */}
+                    <div className="w-full pl-8 py-4">
                         <h2 className="text-lg font-bold mb-4">Results</h2>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
 
                             {data.map(it => (<ResultCard key={it.id} decal={it} />))}
 
