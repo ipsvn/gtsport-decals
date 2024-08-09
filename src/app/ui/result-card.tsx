@@ -12,13 +12,12 @@ export default function ResultCard({ decal }: { decal: FullDecal }) {
             
             <div className="flex flex-col border-border-gray border-2">
                 <div className="flex items-center justify-center aspect-3/2 p-4 bg-light-gray">
-					<div className="w-full h-full object-center object-contain aspect-3/2">
-						<Image src={svgUrl}
-							alt="Decal"
-							className="object-contain object-center"
-							/>
-					</div>
-                    
+                    <Image src={svgUrl}
+                        alt={decal.title}
+						width={300}
+						height={200}
+                        style={{objectFit: 'contain'}}
+                         />
                 </div>
                 
                 <div className="p-4 border-t-border-gray border-t-2 flex justify-between items-end">
