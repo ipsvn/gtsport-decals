@@ -17,6 +17,7 @@ export default function ResultCard({ decal }: { decal: FullDecal }) {
 						width={300}
 						height={200}
                         style={{objectFit: 'contain'}}
+						className="aspect-3/2"
                          />
                 </div>
                 
