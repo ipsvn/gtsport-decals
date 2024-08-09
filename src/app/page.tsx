@@ -2,6 +2,7 @@ import Image from "next/image";
 import { searchDecals } from "./lib/data";
 import ResultCard from "./ui/result-card";
 import Search from "./ui/search";
+import Footer from "./ui/footer";
 
 
 export default async function Page(
@@ -38,7 +39,7 @@ export default async function Page(
                     </div> */}
                     <div className="w-full py-4">
                         <h2 className="text-3xl font-bold mb-4">Results</h2>
-                        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+                        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 pb-20">
 
                             {data.map(it => (<ResultCard key={it.id} decal={it} />))}
 
@@ -46,6 +47,7 @@ export default async function Page(
                     </div>
                 </div>
             </div>
+            <Footer/>
         </main>
     );
 }
