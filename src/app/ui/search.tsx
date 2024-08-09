@@ -24,7 +24,7 @@ export default function Search() {
             <div className="w-full">
                 <div>
                     <input
-                        className="bg-transparent w-full py-4 outline-none text-xl"
+                        className="bg-transparent w-full p-4 outline-none text-xl"
                         placeholder="Search"
                         value={query}
                         onChange={(e) => {
@@ -35,7 +35,7 @@ export default function Search() {
             </div>
             <div>
                 <button
-                    className="py-4"
+                    className="p-4"
                     onClick={(e) => {
                         handleSearch("");
                     }}
