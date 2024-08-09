@@ -15,7 +15,7 @@ export default function ResultCard({ decal }: { decal: FullDecal }) {
 					<div className="w-full h-full object-center object-contain aspect-3/2">
 						<Image src={svgUrl}
 							alt="Decal"
-							className="max-h-fit max-w-fit aspect-auto"
+							className="object-contain object-center"
 							/>
 					</div>
                     
