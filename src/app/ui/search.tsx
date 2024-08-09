@@ -24,7 +24,7 @@ export default function Search() {
             <div className="w-full">
                 <div>
                     <input
-                        className="bg-transparent w-full py-4 outline-none"
+                        className="bg-transparent w-full py-4 outline-none text-xl"
                         placeholder="Search"
                         value={query}
                         onChange={(e) => {
