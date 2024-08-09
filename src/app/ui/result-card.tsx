@@ -23,7 +23,7 @@ export default function ResultCard({ decal }: { decal: FullDecal }) {
                 
                 <div className="p-4 border-t-border-gray border-t-2 flex justify-between items-end">
 					<div className="flex flex-col">
-						<h3 className="text-2xl font-medium break-words">{decal.title}</h3>
+						<h3 className="text-2xl font-medium word-break">{decal.title}</h3>
                     	<p className="text">By: {decal.user.name}</p>
 					</div>
                     <a href={svgUrl} className="size-5" target="_blank" download={`${decal.title} - ${idString}`}>
