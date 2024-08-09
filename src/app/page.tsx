@@ -16,7 +16,7 @@ export default async function Page(
     const data = await searchDecals(query, 50);
 
     return (
-        <main className="relative bg-dark-gray min-h-screen h-full text-white">
+        <main className="relative bg-dark-gray min-h-screen h-full text-white font-sans">
             <div className="sticky top-0 z-50 bg-dark-gray w-full border-b-2 border-b-border-gray">
                 <Search></Search>
             </div>
@@ -36,7 +36,7 @@ export default async function Page(
                             </div>
                         </div>
                     </div> */}
-                    <div className="w-full pl-8 py-4">
+                    <div className="w-full py-4">
                         <h2 className="text-lg font-bold mb-4">Results</h2>
                         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
 

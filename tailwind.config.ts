@@ -17,7 +17,10 @@ const config: Config = {
       },
       aspectRatio: {
         '3/2': '3 / 2',
-      }
+      },
+	  fontFamily: {
+		'sans': ['degular-variable', 'sans-serif'],
+	  }
     },
   },
   plugins: [],
