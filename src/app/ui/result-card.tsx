@@ -12,10 +12,10 @@ export default function ResultCard({ decal }: { decal: FullDecal }) {
             
             <div className="flex flex-col border-border-gray border-2">
                 <div className="flex items-center justify-center aspect-3/2 p-4 bg-light-gray">
-					<div className="w-full h-full object-center object-contain">
+					<div className="w-full h-full object-center object-contain aspect-3/2">
 						<Image src={svgUrl}
 							alt="Decal"
-							className="aspect-3/2"
+							className="max-h-fit max-w-fit aspect-auto"
 							/>
 					</div>
                     
