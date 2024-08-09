@@ -21,7 +21,7 @@ export default function ResultCard({ decal }: { decal: FullDecal }) {
                          />
                 </div>
                 
-                <div className="p-4 border-t-border-gray border-t-2 flex justify-between items-end">
+                <div className="p-4 border-t-border-gray border-t-2 flex justify-between items-end h-full">
 					<div className="flex flex-col">
 						<h3 className="text-2xl font-medium word-break">{decal.title}</h3>
                     	<p className="text">By: {decal.user.name}</p>
