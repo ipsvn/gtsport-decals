@@ -20,8 +20,8 @@ export default function Search() {
     }
 
     return (
-        <div className="container flex justify-between">
-            <div>
+        <div className="container flex justify-between gap-4">
+            <div className="w-full">
                 <div>
                     <input
                         className="bg-transparent w-full py-4 outline-none"
