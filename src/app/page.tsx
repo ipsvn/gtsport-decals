@@ -39,7 +39,7 @@ export default async function Page(
                     </div> */}
                     <div className="w-full py-4">
                         <h2 className="text-3xl font-bold mb-4">Results</h2>
-                        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 pb-20">
+                        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 pb-52 sm:pb-32">
 
                             {data.map(it => (<ResultCard key={it.id} decal={it} />))}
 
