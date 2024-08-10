@@ -42,20 +42,22 @@ export default function DecalList(
         setData([...data, ...results]);
     }
 
-    const loadMoreButton = (<Button
-        className="w-full"
+    const loadMoreButton = (
+        <div className="py-2 px-8 border-2 border-border-gray"><Button
+        className=" !text-white !font-sans !text-lg"
         disabled={saturated}
         onClick={async () => fetchMoreData(data[data.length - 1].id)}
     >
         Load more
-    </Button>);
+    </Button>
+    </div>);
 
     return (
         <div>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 pb-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 pb-4">
                 {data.map(it => (<ResultCard key={it.id} decal={it} />))}
             </div>
-            <div className="pb-52 sm:pb-32">
+            <div className="mb-52 sm:mb-32 flex w-full justify-center">
                 {sort === "default" && loadMoreButton}
             </div>
         </div>

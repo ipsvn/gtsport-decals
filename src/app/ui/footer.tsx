@@ -16,11 +16,6 @@ export default function Footer() {
                             <span className="block">AutoMod Workshop</span>
                         </a>
                     </div>
-                    <div className="flex flex-col gap-2 sm:text-end p-4 border-t-2 border-t-border-gray sm:border-t-0">
-                        <span className="text-white">Database rescued by Bornhall</span>
-                        <span className="text-white">Front-end by <a href="https://dehy.lol" target="_blank" className="text-white font-semibold">dehy</a></span>
-                        <span className="text-white">Back-end by <a href="https://github.com/ipsvn/" target="_blank" className="text-white font-semibold">svn</a></span>
-                    </div>
                 </div>
             </div>
         </div>
