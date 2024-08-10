@@ -4,7 +4,7 @@ import ResultCard from "./decal-card";
 import { decalSortOptions, FullDecal } from "../lib/data";
 import Button from "@mui/material/Button";
 import { useState } from "react";
-import { DECAL_SEARCH_LIMIT } from "../api/decals/search/route";
+import { DECAL_SEARCH_LIMIT } from "@/constants";
 
 interface DecalListProps {
     query: string,

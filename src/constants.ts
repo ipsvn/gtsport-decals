@@ -1,0 +1,1 @@
+export const DECAL_SEARCH_LIMIT = 150;

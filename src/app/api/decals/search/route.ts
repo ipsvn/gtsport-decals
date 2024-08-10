@@ -1,7 +1,6 @@
-import { decalInclude, searchDecals, decalSortOptions } from "@/app/lib/data";
+import { searchDecals, decalSortOptions } from "@/app/lib/data";
+import { DECAL_SEARCH_LIMIT } from "@/constants";
 import { NextRequest } from "next/server";
-
-export const DECAL_SEARCH_LIMIT = 150;
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams
