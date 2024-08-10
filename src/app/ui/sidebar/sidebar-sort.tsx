@@ -1,13 +1,12 @@
-"use client"
+'use client'
 
 import { decalSortOptions } from "@/app/lib/data";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
 type SelectedSort = keyof typeof decalSortOptions;
 
@@ -30,27 +29,21 @@ export default function SidebarSortSelect() {
 
     return (
         <FormControl className="w-full" size="small">
-            <InputLabel 
-                id="sidebar-sort-label"
-                className="!text-white !font-sans">Order</InputLabel>
             <Select
                 labelId="sidebar-sort-label"
                 id="sidebar-sort"
                 value={option}
-                label="Order"
-                className="!text-white !font-sans"
                 onChange={(event) => handleChange(event.target.value.toString())}
             >
                 {Object.keys(decalSortOptions).map(it => (
                     <MenuItem
                         key={it}
                         value={it}
-                        className="!font-sans"
                     >
                         {decalSortOptions[it].name}
                     </MenuItem>
                 ))}
             </Select>
-        </FormControl >
+        </FormControl>
     );
 }

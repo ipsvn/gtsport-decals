@@ -1,13 +1,10 @@
 import SidebarCreatorAutocomplete from "./creator-autocomplete";
 import SidebarSortSelect from "./sidebar-sort";
 
-export default async function Sidebar() {
-
-
-
+export default function Sidebar() {
     return (
-        <div className="hidden md:flex flex-col justify-between gap-4 w-1/4 pr-8 mr-4 border-r-2 border-r-border-gray py-4 sticky top-[62px] h-screen pb-52 sm:pb-32 font-sans">
-            <div className="flex flex-col gap-4">
+        <div className="hidden md:flex flex-col justify-between gap-4 w-1/4 pr-8 mr-4 border-r-2 border-r-border-gray py-4 sticky top-[62px] h-[calc(100vh-124px)] font-sans">
+            <div className="flex flex-col gap-2">
                 <h2 className="text-lg font-bold">Sort</h2>
                 <SidebarSortSelect />
                 <h2 className="text-lg font-bold">Filters</h2>

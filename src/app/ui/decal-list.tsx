@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import ResultCard from "./decal-card";
 import { decalSortOptions, FullDecal } from "../lib/data";
@@ -43,22 +43,23 @@ export default function DecalList(
     }
 
     const loadMoreButton = (
-        <div className="py-2 px-8 border-2 border-border-gray"><Button
-        className=" !text-white !font-sans !text-lg"
-        disabled={saturated}
-        onClick={async () => fetchMoreData(data[data.length - 1].id)}
-    >
-        Load more
-    </Button>
-    </div>);
+        <div className="py-2 px-8 border-2 border-border-gray">
+            <Button
+                className=" !text-white !font-sans !text-lg"
+                disabled={saturated}
+                onClick={async () => fetchMoreData(data[data.length - 1].id)}
+            >
+                Load more
+            </Button>
+        </div>);
 
     return (
         <div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 pb-4">
                 {data.map(it => (<ResultCard key={it.id} decal={it} />))}
             </div>
-            <div className="mb-52 sm:mb-32 flex w-full justify-center">
-                {sort === "default" && loadMoreButton}
+            <div className="mb-52 sm    :mb-32 flex w-full justify-center">
+                {loadMoreButton}
             </div>
         </div>
     );

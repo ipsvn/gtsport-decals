@@ -24,30 +24,30 @@ export const decalSortOptions: {
             id: "asc"
         }
     },
-    titleAsc: {
-        name: "Title (Ascending)",
-        prismaOrder: {
-            title: "asc"
-        }
-    },
-    titleDesc: {
-        name: "Title (Descending)",
-        prismaOrder: {
-            title: "desc"
-        }
-    },
-    timestampAsc: {
-        name: "Timestamp (Ascending)",
-        prismaOrder: {
-            create_time: "asc"
-        }
-    },
-    timestampDesc: {
-        name: "Timestamp (Descending)",
-        prismaOrder: {
-            create_time: "desc"
-        }
-    }
+    // titleAsc: {
+    //     name: "Title (Ascending)",
+    //     prismaOrder: {
+    //         title: "asc"
+    //     }
+    // },
+    // titleDesc: {
+    //     name: "Title (Descending)",
+    //     prismaOrder: {
+    //         title: "desc"
+    //     }
+    // },
+    // timestampAsc: {
+    //     name: "Timestamp (Ascending)",
+    //     prismaOrder: {
+    //         create_time: "asc"
+    //     }
+    // },
+    // timestampDesc: {
+    //     name: "Timestamp (Descending)",
+    //     prismaOrder: {
+    //         create_time: "desc"
+    //     }
+    // }
 };
 
 interface SearchDecalsOptions {
