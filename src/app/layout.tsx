@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,11 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-y-scroll">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/wjr4gin.css" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <AppRouterCacheProvider>
+        <body className={inter.className}>{children}</body>
+      </AppRouterCacheProvider>
     </html>
   );
 }

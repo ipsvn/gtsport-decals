@@ -1,4 +1,8 @@
-interface SearchParams {
-    query?: string;
-    page?: string;
-};
+// import { decalSortOptions } from "./data";
+
+// interface SearchParams {
+//     query?: string;
+//     creator?: string;
+//     page?: string;
+//     sort?: string;
+// };
