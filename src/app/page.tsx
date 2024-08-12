@@ -1,9 +1,10 @@
-import { decalSortOptions, searchDecals } from "./lib/data";
 import Search from "./ui/search";
 import Footer from "./ui/footer";
 
 import Sidebar from "./ui/sidebar/sidebar";
 import DecalList from "./ui/decal-list";
+import { decalSortOptions } from "./lib/data-utils";
+import { searchDecals } from "./lib/data";
 
 interface SearchParams {
     query?: string;
