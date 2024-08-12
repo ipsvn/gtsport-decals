@@ -16,7 +16,7 @@ export type DecalSortOption = {
     prismaOrder: Prisma.DecalOrderByWithAggregationInput
 };
 export const decalSortOptions: {
-    [key: string]: DecalSortOption 
+    [key: string]: DecalSortOption
 } = {
     default: {
         name: "Default",
@@ -76,13 +76,12 @@ export async function searchDecals(
                 {
                     title: {
                         contains: query
-                    },
+                    }
+                },
+                {
                     keyword: {
                         contains: query
                     },
-                    // comment: {
-                    //     contains: query
-                    // }
                 }
             ],
 
