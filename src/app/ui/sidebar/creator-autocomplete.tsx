@@ -18,17 +18,6 @@ export default function SidebarCreatorAutocomplete() {
 
     const [loaded, setLoaded] = useState(!param);
 
-    useEffect(() => {
-
-        if (!param || loaded) return;
-
-        (async () => {
-            await fetchOptions(param);
-            setLoaded(true);
-        })();
-
-    }, [loaded]);
-
     const fetchOptions = useDebouncedCallback(async (value: string) => {
         const response = await fetch("/api/creators/search?query=" + value);
         const json = await response.json();
@@ -48,6 +37,17 @@ export default function SidebarCreatorAutocomplete() {
     }
 
     const [options, setOptions] = useState<readonly string[]>([]);
+
+    useEffect(() => {
+
+        if (!param || loaded) return;
+
+        (async () => {
+            await fetchOptions(param);
+            setLoaded(true);
+        })();
+
+    }, [loaded, fetchOptions, param]);
 
     return (
         <Autocomplete
