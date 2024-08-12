@@ -1,7 +1,9 @@
-import Image from "next/image";
 import { FullDecal } from "../lib/data-utils";
 import { getDecalImageUrl } from "../lib/utils";
+
 import { Fragment, useState } from "react";
+import Image from "next/image";
+
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";

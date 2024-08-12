@@ -1,12 +1,13 @@
 'use client'
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { decalSortOptions } from "@/app/lib/data-utils";
+
 import { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { decalSortOptions } from "@/app/lib/data-utils";
 
 type SelectedSort = keyof typeof decalSortOptions;
 

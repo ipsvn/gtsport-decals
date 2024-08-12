@@ -6,7 +6,7 @@ import DecalList from "./ui/decal-list";
 import { decalSortOptions } from "./lib/data-utils";
 import { searchDecals } from "./lib/data";
 
-interface SearchParams {
+interface PageSearchParams {
     query?: string;
     creator?: string;
     page?: string;
@@ -17,7 +17,7 @@ export default async function Page(
     {
         searchParams,
     }: {
-        searchParams?: SearchParams;
+        searchParams?: PageSearchParams;
     }
 ) {
 

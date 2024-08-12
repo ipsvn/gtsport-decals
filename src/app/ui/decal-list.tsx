@@ -1,10 +1,12 @@
 'use client'
 
+import { decalSortOptions, FullDecal } from "../lib/data-utils";
+import { DECAL_SEARCH_LIMIT } from "@/constants";
+
+import { useState } from "react";
+
 import ResultCard from "./decal-card";
 import Button from "@mui/material/Button";
-import { useState } from "react";
-import { DECAL_SEARCH_LIMIT } from "@/constants";
-import { decalSortOptions, FullDecal } from "../lib/data-utils";
 
 interface DecalListProps {
     query: string,

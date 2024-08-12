@@ -1,4 +1,3 @@
-import { Prisma } from "@prisma/client";
 import prisma from "./prisma";
 import { decalInclude, DecalSortOption, decalSortOptions, FullDecal } from "./data-utils";
 
