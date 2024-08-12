@@ -14,9 +14,13 @@ export default function Search() {
 
     const handleSearch = useDebouncedCallback((value: string) => {
         const params = new URLSearchParams(searchParams);
-        params.set('query', value);
+        if (value.length != 0) {
+            params.set('query', value);
+        } else {
+            params.delete('query');
+        }
         replace(`${pathname}?${params.toString()}`);
-    }, 100);
+    }, 500);
     
     return (
         <div className="container flex justify-between gap-4">
