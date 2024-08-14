@@ -1,7 +1,7 @@
 'use client'
 
 import { User } from "@prisma/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
