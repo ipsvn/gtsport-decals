@@ -4,3 +4,7 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+BigInt.prototype.toJSON = function() {
+    return this.toString()
+} 

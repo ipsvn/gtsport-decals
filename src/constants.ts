@@ -1,0 +1,1 @@
+export const DECAL_MAX_RESULTS = 250;

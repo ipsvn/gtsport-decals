@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 
 export default function Search() {
 
@@ -10,23 +10,25 @@ export default function Search() {
     const { replace } = useRouter();
 
     const param = searchParams.get('query')?.toString();
-    const [query, setQuery] = useState(param);
 
-    function handleSearch(value: string) {
+    const handleSearch = useDebouncedCallback((value: string) => {
         const params = new URLSearchParams(searchParams);
-        params.set('query', value);
+        if (value.length != 0) {
+            params.set('query', value);
+        } else {
+            params.delete('query');
+        }
         replace(`${pathname}?${params.toString()}`);
-        setQuery(value);
-    }
-
+    }, 500);
+    
     return (
         <div className="container flex justify-between gap-4">
             <div className="w-full">
                 <div>
                     <input
                         className="bg-transparent w-full p-4 outline-none text-xl"
+                        defaultValue={param}
                         placeholder="Search"
-                        value={query}
                         onChange={(e) => {
                             handleSearch(e.target.value);
                         }}
@@ -36,9 +38,7 @@ export default function Search() {
             <div>
                 <button
                     className="p-4"
-                    onClick={(e) => {
-                        handleSearch("");
-                    }}
+                    onClick={() => handleSearch("")}
                 >
                     X
                 </button>

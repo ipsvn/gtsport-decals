@@ -13,7 +13,7 @@ async function main() {
     const dataGlob = new Glob('data/**/*.json', {});
     for await (const match of dataGlob) {
 
-        console.log(`parse ${match}`)
+        // console.log(`parse ${match}`)
         const file = await readFile(match, { encoding: 'utf8' });
         
         let json: any = {};

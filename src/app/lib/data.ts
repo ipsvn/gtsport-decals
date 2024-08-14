@@ -1,29 +1,51 @@
-import { Prisma } from "@prisma/client";
 import prisma from "./prisma";
+import { 
+    decalInclude, 
+    DecalSortOption, 
+    decalSortOptions, 
+    FullDecal
+} from "./data-utils";
 
-export const decalInclude = {
-    // tags: true,
-    user: true
-} satisfies Prisma.DecalSelect;
+type DecalCursorType = bigint | undefined;
 
-export type FullDecal = Prisma.DecalGetPayload<{
-    include: typeof decalInclude
-}>;
+interface SearchDecalsOptions {
+    max?: number,
+    after?: DecalCursorType,
+    creator?: string | null | undefined,
+    sort?: DecalSortOption
+}
 
 export async function searchDecals(
     query: string,
-    max: number = 50,
-    creator: bigint | undefined = undefined
+    options: SearchDecalsOptions = {}
 ): Promise<FullDecal[]> {
+
+    const max = options.max ?? 50;
+    const sort = options.sort ?? decalSortOptions.default
+    const {
+        after, creator
+    } = options;
 
     const results = await prisma.decal.findMany({
         where: {
-            title: {
-                contains: query
-            },
-            
-            ...(creator !== undefined && { userId: creator })
+            ...(after && { id: { gt: after } }),
+
+            OR: [
+                {
+                    title: {
+                        contains: query
+                    }
+                },
+                {
+                    keyword: {
+                        contains: query
+                    },
+                }
+            ],
+
+            ...(creator && { user: { name: { equals: creator } } })
         },
+        orderBy: sort.prismaOrder,
         include: decalInclude,
         take: max
     });
