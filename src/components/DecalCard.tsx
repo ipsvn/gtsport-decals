@@ -1,5 +1,5 @@
-import { FullDecal } from "../lib/data-utils";
-import { getDecalImageUrl } from "../lib/utils";
+import { FullDecal } from "@/lib/data-utils";
+import { getDecalImageUrl } from "@/utils/utils";
 
 import { Fragment, useState } from "react";
 import Image from "next/image";

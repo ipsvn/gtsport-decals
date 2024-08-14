@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import { decalSortOptions, FullDecal } from "../lib/data-utils";
+import { decalSortOptions, FullDecal } from "@/utils/data-utils";
 import { DECAL_MAX_RESULTS } from "@/constants";
 
 import { useState } from "react";
-import DecalCard from "./decal-card";
-import InfiniteScrollHelper from "./infinite-scroll";
+import DecalCard from "./DecalCard";
+import InfiniteScrollHelper from "./InfiniteScrollHelper";
 
 import CircularProgress from '@mui/material/CircularProgress';
 

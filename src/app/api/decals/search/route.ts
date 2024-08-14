@@ -1,5 +1,5 @@
-import { searchDecals } from "@/app/lib/data";
-import { decalSortOptions } from "@/app/lib/data-utils";
+import { searchDecals } from "@/lib/data";
+import { decalSortOptions } from "@/lib/data-utils";
 import { DECAL_MAX_RESULTS } from "@/constants";
 
 import { NextRequest } from "next/server";

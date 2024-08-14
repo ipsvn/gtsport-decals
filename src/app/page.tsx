@@ -1,10 +1,10 @@
-import Search from "./ui/search";
-import Footer from "./ui/footer";
+import Search from "@/components/Search";
+import Footer from "@/components/Footer";
 
-import Sidebar from "./ui/sidebar/sidebar";
-import DecalList from "./ui/decal-list";
-import { decalSortOptions } from "./lib/data-utils";
-import { searchDecals } from "./lib/data";
+import Sidebar from "@/components/sidebar/Sidebar";
+import DecalList from "@/components/DecalList";
+import { decalSortOptions } from "@/lib/data-utils";
+import { searchDecals } from "@/lib/data";
 
 interface PageSearchParams {
     query?: string;

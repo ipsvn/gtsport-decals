@@ -4,7 +4,7 @@ import {
     DecalSortOption, 
     decalSortOptions, 
     FullDecal
-} from "./data-utils";
+} from "@/utils/data-utils";
 
 type DecalCursorType = bigint | undefined;
 

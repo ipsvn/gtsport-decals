@@ -1,5 +1,5 @@
-import SidebarCreatorAutocomplete from "./creator-autocomplete";
-import SidebarSortSelect from "./sidebar-sort";
+import SidebarCreatorAutocomplete from "./SidebarCreatorAutocomplete";
+import SidebarSortSelect from "./SidebarSortSelect";
 
 export default function Sidebar() {
     return (
