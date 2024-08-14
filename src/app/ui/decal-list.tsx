@@ -1,10 +1,9 @@
 'use client'
 
 import { decalSortOptions, FullDecal } from "../lib/data-utils";
-import { DECAL_SEARCH_LIMIT } from "@/constants";
+import { DECAL_MAX_RESULTS } from "@/constants";
 
 import { useState } from "react";
-
 import ResultCard from "./decal-card";
 import Button from "@mui/material/Button";
 
@@ -35,9 +34,9 @@ export default function DecalList(
         if (creator) params.append('creator', creator);
         const response = await fetch("/api/decals/search?" + params.toString());
         const json = await response.json();
-        const results = json.results as FullDecal[]
+        const results = json.results as FullDecal[];
 
-        if (results.length < DECAL_SEARCH_LIMIT) {
+        if (results.length < DECAL_MAX_RESULTS) {
             setSaturated(true);
         }
 
@@ -53,7 +52,8 @@ export default function DecalList(
             >
                 Load more
             </Button>
-        </div>);
+        </div>
+    );
 
     return (
         <div>
@@ -61,7 +61,7 @@ export default function DecalList(
                 {data.map(it => (<ResultCard key={it.id} decal={it} />))}
             </div>
             <div className="mb-52 sm    :mb-32 flex w-full justify-center">
-                {loadMoreButton}
+                {!saturated && loadMoreButton}
             </div>
         </div>
     );

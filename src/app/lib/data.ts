@@ -1,5 +1,10 @@
 import prisma from "./prisma";
-import { decalInclude, DecalSortOption, decalSortOptions, FullDecal } from "./data-utils";
+import { 
+    decalInclude, 
+    DecalSortOption, 
+    decalSortOptions, 
+    FullDecal
+} from "./data-utils";
 
 type DecalCursorType = bigint | undefined;
 
@@ -15,8 +20,8 @@ export async function searchDecals(
     options: SearchDecalsOptions = {}
 ): Promise<FullDecal[]> {
 
-    const max = options.max || 50;
-    const sort = options.sort || decalSortOptions.default
+    const max = options.max ?? 50;
+    const sort = options.sort ?? decalSortOptions.default
     const {
         after, creator
     } = options;

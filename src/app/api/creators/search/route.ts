@@ -1,14 +1,25 @@
 import prisma from "@/app/lib/prisma";
 import { NextRequest } from "next/server";
+import { z } from "zod";
+
+const schema = z.object({
+    query: z.string()
+});
 
 export async function GET(request: NextRequest) {
-    const searchParams = request.nextUrl.searchParams
-    const query = searchParams.get('query')
+    const searchParams = request.nextUrl.searchParams;
+    const response = schema.safeParse({
+        query: searchParams.get('query')
+    });
 
-    if (!query)
-    {
-        return Response.json({ error: "parameter 'query' required" }, { status: 400 })
+    if (!response.success) {
+        const { errors } = response.error;
+        return Response.json({ errors }, { status: 400 })
     }
+
+    const {
+        query
+    } = response.data;
 
     const results = await prisma.user.findMany({
         where: {

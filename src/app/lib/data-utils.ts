@@ -46,4 +46,4 @@ export const decalSortOptions: {
     //         create_time: "desc"
     //     }
     // }
-};
+} as const;

@@ -38,7 +38,7 @@ export default function Search() {
             <div>
                 <button
                     className="p-4"
-                    onClick={(e) => handleSearch("")}
+                    onClick={() => handleSearch("")}
                 >
                     X
                 </button>
