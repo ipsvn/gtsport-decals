@@ -1,6 +1,6 @@
 'use client'
 
-import { decalSortOptions } from "@/lib/data-utils";
+import { decalSortOptions } from "@/utils/data-utils";
 
 import { useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";

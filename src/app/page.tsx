@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 
 import Sidebar from "@/components/sidebar/Sidebar";
 import DecalList from "@/components/DecalList";
-import { decalSortOptions } from "@/lib/data-utils";
+import { decalSortOptions } from "@/utils/data-utils";
 import { searchDecals } from "@/lib/data";
 
 interface PageSearchParams {
