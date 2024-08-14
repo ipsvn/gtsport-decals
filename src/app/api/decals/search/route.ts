@@ -4,7 +4,7 @@ import { DECAL_MAX_RESULTS } from "@/constants";
 
 import { NextRequest } from "next/server";
 import { z } from "zod";
-import { ParseBigInt } from "@/zod-utlis";
+import { ParseBigInt } from "@/zod-utils";
 
 const [firstKey, ...otherKeys] = Object.keys(decalSortOptions)
 const DecalSortOption = z.enum([firstKey, ...otherKeys])
