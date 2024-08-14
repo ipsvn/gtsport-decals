@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
                 startsWith: query
             }
         },
-        take: 25
+        take: 50
     });
 
     return Response.json({ results });

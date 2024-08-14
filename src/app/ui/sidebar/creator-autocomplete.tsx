@@ -13,17 +13,22 @@ export default function SidebarCreatorAutocomplete() {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
-
+    
     const param = searchParams.get('creator')?.toString();
 
-    const [loaded, setLoaded] = useState(!param);
+    const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [options, setOptions] = useState<readonly string[]>([]);
 
     const fetchOptions = useDebouncedCallback(async (value: string) => {
+        setLoading(true);
         const response = await fetch("/api/creators/search?query=" + value);
         const json = await response.json();
         const results = json.results as User[];
 
         setOptions(results.map(it => it.name ?? ""));
+        setLoading(false);
+        setLoaded(true);
     }, 100);
 
     function updateQuery(user: string | null) {
@@ -36,40 +41,23 @@ export default function SidebarCreatorAutocomplete() {
         replace(`${pathname}?${params.toString()}`);
     }
 
-    const [options, setOptions] = useState<readonly string[]>([]);
-
-    useEffect(() => {
-
-        if (!param || loaded) return;
-
-        (async () => {
-            await fetchOptions(param);
-            setLoaded(true);
-        })();
-
-    }, [loaded, fetchOptions, param]);
-
     return (
         <Autocomplete
-            id="sidebar-filter-creator"
-            className="w-full"
+            id="filter-creator-autocomplete"
             size="small"
             defaultValue={param}
-            onChange={(event, value) => {
-                if (!value) {
-                    setOptions([]);
-                }
+            onOpen={() => {
+                if (!loaded && !loading) fetchOptions(param ?? "");
+            }}
+            onChange={(_, value) => {
                 updateQuery(value);
             }}
-            onInputChange={async (event, value, reason) => {
-                if (!value || reason === "reset") {
-                    return;
-                }
+            onInputChange={async (_, value) => {
                 fetchOptions(value);
             }}
             noOptionsText="No results"
             options={options}
-            filterOptions={(x) => x}
+            loading={loading}
             renderInput={(params) => <TextField {...params} label="Creator" />}
         />
     );
