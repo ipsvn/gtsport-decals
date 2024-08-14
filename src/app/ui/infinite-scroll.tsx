@@ -11,6 +11,6 @@ export default function InfiniteScrollHelper(
         if (inView) {
             onceInView();
         }
-    }, [inView]);
+    }, [inView, onceInView]);
     return <div ref={ref} />;
 }
