@@ -8,12 +8,11 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
-export default function ResultCard({ decal }: { decal: FullDecal }) {
+export default function DecalCard({ decal }: { decal: FullDecal }) {
 	const idString = decal.id.toString();
 	const svgUrl = getDecalImageUrl(idString);
 
 	const [open, setOpen] = useState(false);
-	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
 	return (

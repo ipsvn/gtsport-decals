@@ -4,8 +4,10 @@ import { decalSortOptions, FullDecal } from "../lib/data-utils";
 import { DECAL_MAX_RESULTS } from "@/constants";
 
 import { useState } from "react";
-import ResultCard from "./decal-card";
-import Button from "@mui/material/Button";
+import DecalCard from "./decal-card";
+import InfiniteScrollHelper from "./infinite-scroll";
+
+import CircularProgress from '@mui/material/CircularProgress';
 
 interface DecalListProps {
     query: string,
@@ -23,15 +25,19 @@ export default function DecalList(
     }: DecalListProps
 ) {
     const [data, setData] = useState(decals);
+    const [loading, setLoading] = useState(false);
     const [saturated, setSaturated] = useState(false);
 
     async function fetchMoreData(after: bigint) {
+        setLoading(true);
+
         const params = new URLSearchParams({
             query: query,
             sort: sort.toString(),
             after: after.toString()
         });
         if (creator) params.append('creator', creator);
+
         const response = await fetch("/api/decals/search?" + params.toString());
         const json = await response.json();
         const results = json.results as FullDecal[];
@@ -41,27 +47,20 @@ export default function DecalList(
         }
 
         setData([...data, ...results]);
+        setLoading(false);
     }
-
-    const loadMoreButton = (
-        <div className="py-2 px-8 border-2 border-border-gray">
-            <Button
-                className=" !text-white !font-sans !text-lg"
-                disabled={saturated}
-                onClick={async () => fetchMoreData(data[data.length - 1].id)}
-            >
-                Load more
-            </Button>
-        </div>
-    );
 
     return (
         <div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 pb-4">
-                {data.map(it => (<ResultCard key={it.id} decal={it} />))}
+                {data.map(it => (<DecalCard key={it.id} decal={it} />))}
+
+                <InfiniteScrollHelper onceInView={() => {
+                    if (!loading && !saturated) fetchMoreData(data[data.length - 1].id);
+                }} />
             </div>
-            <div className="mb-52 sm    :mb-32 flex w-full justify-center">
-                {!saturated && loadMoreButton}
+            <div className="mb-52 sm:mb-32 flex w-full justify-center">
+                { !saturated && loading && <CircularProgress size={36}/> }
             </div>
         </div>
     );

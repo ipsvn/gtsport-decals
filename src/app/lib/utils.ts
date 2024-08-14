@@ -1,7 +1,7 @@
 export function getDecalImageUrl(decalId: BigInt | string): string {
-    
+
     const idString = decalId.toString();
-    
+
     const part1 = idString.substring(0, 2);
     const part2 = idString.substring(2, 4);
     const part3 = idString.substring(4, 6);
@@ -9,4 +9,12 @@ export function getDecalImageUrl(decalId: BigInt | string): string {
 
     const url = `/decals/${part1}/${part2}/${part3}/${part4}/${idString}.svg`;
     return url;
+}
+
+export async function sleep(ms: number) {
+    return new Promise<void>((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, ms);
+    });
 }
