@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { decalSortOptions } from "@/utils/data-utils";
 
