@@ -50,14 +50,16 @@ export default function DecalList(
         setLoading(false);
     }
 
+    const infiniteScrollHelper = <InfiniteScrollHelper onceInView={() => {
+        if (!loading && !saturated) fetchMoreData(data[data.length - 1].id);
+    }} />;
+
     return (
         <div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 pb-4">
                 {data.map(it => (<DecalCard key={it.id} decal={it} />))}
 
-                <InfiniteScrollHelper onceInView={() => {
-                    if (!loading && !saturated) fetchMoreData(data[data.length - 1].id);
-                }} />
+                {data.length > 0 && infiniteScrollHelper}
             </div>
             <div className="mb-52 sm:mb-32 flex w-full justify-center">
                 { !saturated && loading && <CircularProgress size={36}/> }
