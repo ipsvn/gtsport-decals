@@ -5,6 +5,7 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import DecalList from "@/components/DecalList";
 import { decalSortOptions } from "@/utils/data-utils";
 import { searchDecals } from "@/lib/data";
+import { DECAL_MAX_RESULTS } from "@/constants";
 
 interface PageSearchParams {
     query?: string;
@@ -25,7 +26,7 @@ export default async function Page(
     const creator = searchParams?.creator;
     const sort = (searchParams?.sort || "default") as keyof typeof decalSortOptions;
     const data = await searchDecals(query, {
-        max: 150,
+        max: DECAL_MAX_RESULTS,
         creator,
         sort: decalSortOptions[sort]
     });
