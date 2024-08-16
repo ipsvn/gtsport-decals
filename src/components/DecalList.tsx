@@ -59,7 +59,7 @@ export default function DecalList(
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 pb-4">
                 {data.map(it => (<DecalCard key={it.id} decal={it} />))}
 
-                {data.length > 0 && infiniteScrollHelper}
+                {!loading && data.length > 0 && infiniteScrollHelper}
             </div>
             <div className="mb-52 sm:mb-32 flex w-full justify-center">
                 { !saturated && loading && <CircularProgress size={36}/> }
