@@ -6,6 +6,10 @@
   @apply relative px-6 lg:px-10 xl:px-16 max-w-[84rem] mx-auto;
 }
 
+.container-modal {
+  @apply relative px-6 md:px-10 lg:px-16 xl:px-24 max-w-[65rem] mx-auto;
+}
+
 .word-break {
 	word-break: break-word;
 }
