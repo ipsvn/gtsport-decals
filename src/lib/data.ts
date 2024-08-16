@@ -15,6 +15,22 @@ interface SearchDecalsOptions {
     sort?: DecalSortOption
 }
 
+export async function findDecal(
+    id: bigint,
+): Promise<FullDecal | null> {
+
+    const result = await prisma.decal.findFirst({
+        where: {
+            id: id
+        },
+        include: decalInclude
+    });
+
+    return result;
+
+}
+
+
 export async function searchDecals(
     query: string,
     options: SearchDecalsOptions = {}

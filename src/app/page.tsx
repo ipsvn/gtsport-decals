@@ -1,56 +1,39 @@
-import Search from "@/components/Search";
-import Footer from "@/components/Footer";
+import { DecalModalRenderer } from "@/components/DecalModalRenderer";
+import { MainPageLayout, MainPageLayoutParams } from "@/components/page/MainPageLayout";
+import { DecalModalProvider } from "@/contexts/DecalModalContext";
+import { findDecal } from "@/lib/data";
+import { FullDecal } from "@/utils/data-utils";
+import { ParseBigInt } from "@/zod-utils";
+import { inspect } from "util";
+import { z } from "zod";
 
-import Sidebar from "@/components/sidebar/Sidebar";
-import DecalList from "@/components/DecalList";
-import { decalSortOptions } from "@/utils/data-utils";
-import { searchDecals } from "@/lib/data";
-import { DECAL_MAX_RESULTS } from "@/constants";
+const decalSchema = z.string().transform(ParseBigInt).nullable();
 
-interface PageSearchParams {
-    query?: string;
-    creator?: string;
-    page?: string;
-    sort?: string;
-};
+interface PageParams extends MainPageLayoutParams {
+    decal?: string
+}
 
 export default async function Page(
     {
-        searchParams,
+        searchParams
     }: {
-        searchParams?: PageSearchParams;
+        searchParams: PageParams
     }
 ) {
 
-    const query = searchParams?.query || '';
-    const creator = searchParams?.creator;
-    const sort = (searchParams?.sort || "default") as keyof typeof decalSortOptions;
-    const data = await searchDecals(query, {
-        max: DECAL_MAX_RESULTS,
-        creator,
-        sort: decalSortOptions[sort]
-    });
+    const decalId = decalSchema.safeParse(searchParams?.decal);
 
-    const decalListKey = JSON.stringify(searchParams);
-    console.log(decalListKey);
+    let decal: FullDecal | undefined = undefined;
+    if (decalId.success && decalId.data) {
+        decal = await findDecal(decalId.data) ?? undefined;
+    }
+
+    console.log("loaded decal: " + inspect(decal, {colors: true}));
 
     return (
-        <main className="relative bg-dark-gray min-h-screen h-full text-white font-sans">
-            <div className="sticky top-0 z-50 bg-dark-gray w-full border-b-2 border-b-border-gray">
-                <Search></Search>
-            </div>
-            <div className="container">
-                <div className="flex justify-center">
-
-                    <Sidebar />
-
-                    <div className="w-full py-4">
-                        <h2 className="text-3xl font-bold mb-4">Results</h2>
-                        <DecalList key={decalListKey} query={query} creator={creator} sort={sort} decals={data} />
-                    </div>
-                </div>
-            </div>
-            <Footer/>
-        </main>
+        <DecalModalProvider decal={ decal }>
+            <MainPageLayout {...searchParams} />
+            <DecalModalRenderer />
+        </DecalModalProvider>
     );
 }

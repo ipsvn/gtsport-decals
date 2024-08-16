@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .container {
-  @apply px-6 lg:px-10 xl:px-16 max-w-[84rem] mx-auto;
+  @apply relative px-6 lg:px-10 xl:px-16 max-w-[84rem] mx-auto;
 }
 
 .word-break {
