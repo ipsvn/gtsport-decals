@@ -37,7 +37,7 @@ export function DecalModal(
         <Modal
             open={open}
             onClose={handleClose}
-            className="justify-center"
+            className="justify-center overflow-y-scroll"
             aria-labelledby="decal-modal-title"
             aria-describedby="decal-modal-description"
         >
@@ -62,32 +62,37 @@ export function DecalModal(
                         <h3 className="text-white text-3xl font-bold word-break">
                             {decal.title}
                         </h3>
-                        <p className="text">By: {decal.user.name}</p>
+                        <p className="text">
+                            By:{" "}
+                            <a href={`/?creator=${decal.user.name}`}>
+                                {decal.user.name}
+                            </a>
+                        </p>
                         <a href={svgUrl} className="size-5 flex-shrink-0" target="_blank" download={`${decal.title} - ${idString}`}>
                             <Image
                                 src={downloadIcon}
                                 alt="Download icon"
                             />
                         </a>
-                    </div>
 
-                    <span>{decal.comment}</span>
+                        <span>{decal.comment}</span>
 
-                    <div>
-                        {...keywords.map(keyword => (
-                            <span
-                                className="mr-2 bg-slate-800"
-                                key={keyword}
-                            >
-                                {keyword}
-                            </span>
-                        ))}
-                    </div>
+                        <div>
+                            {...keywords.map(keyword => (
+                                <span
+                                    className="mr-2 bg-slate-800"
+                                    key={keyword}
+                                >
+                                    {keyword}
+                                </span>
+                            ))}
+                        </div>
 
-                    <span>{decal.create_time.toString()}</span>
+                        <span>{decal.create_time.toString()}</span>
 
-                    <div className="w-1/2 ml-4">
-                        <CopyTextBox text={url} />
+                        <div className="w-1/2">
+                            <CopyTextBox text={url} />
+                        </div>
                     </div>
 
                 </div>
