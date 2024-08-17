@@ -74,7 +74,14 @@ export function DecalModal(
                     <span>{decal.comment}</span>
 
                     <div>
-                        {...keywords.map(keyword => ( <span className="mr-2 bg-slate-800">{keyword}</span> ))}
+                        {...keywords.map(keyword => (
+                            <span
+                                className="mr-2 bg-slate-800"
+                                key={keyword}
+                            >
+                                {keyword}
+                            </span>
+                        ))}
                     </div>
 
                     <span>{decal.create_time.toString()}</span>

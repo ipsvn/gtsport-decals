@@ -5,13 +5,9 @@ import { DecalModal } from "./DecalModal";
 import { DecalModalContext } from "@/contexts/DecalModalContext";
 
 
-export function DecalModalRenderer(
-    
-) {
+export function DecalModalRenderer() {
 
     const modalState = useContext(DecalModalContext);
-
-    console.log("modal renderer");
 
     return (
         <Fragment>
