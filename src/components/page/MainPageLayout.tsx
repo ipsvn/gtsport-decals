@@ -8,9 +8,6 @@ import Sidebar from "../sidebar/Sidebar";
 import DecalList from "../DecalList";
 import Footer from "../Footer";
 import { JumpToTopButton } from "../JumpToTopButton";
-import { Fab } from "@mui/material";
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-
 
 export interface MainPageLayoutParams {
     query?: string;

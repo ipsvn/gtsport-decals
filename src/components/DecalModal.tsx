@@ -1,14 +1,12 @@
-import Modal from "@mui/material/Modal";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import downloadIcon from "/public/download.svg";
+import Image from "next/image";
 import { FullDecal } from "@/utils/data-utils";
-
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { getDecalImageUrl } from "@/utils/utils";
+import { CopyTextBox } from "./CopyTextBox";
 
 import Box from "@mui/material/Box";
-import { getDecalImageUrl } from "@/utils/utils";
-import Image from "next/image";
-import { Button } from "@mui/material";
-import downloadIcon from "/public/download.svg";
+import Modal from "@mui/material/Modal";
+import { useEffect, useState } from "react";
 
 export interface DecalModalProps {
     open: boolean,
@@ -24,8 +22,16 @@ export function DecalModal(
     }: DecalModalProps
 ) {
 
+    const [url, setUrl] = useState("");
+    useEffect(() => {
+        setUrl(window.location.origin + "?decal=" + decal.id);
+    }, []);
+
     const idString = decal.id.toString();
     const svgUrl = getDecalImageUrl(idString);
+
+    const keywordTrim = decal.keyword?.trim();
+    const keywords = keywordTrim ? keywordTrim.split(" ") : [];
 
     return (
         <Modal
@@ -41,8 +47,9 @@ export function DecalModal(
 
                 <div className="bg-dark-gray flex flex-col h-full">
                     <div className="flex items-center justify-center w-full h-min bg-light-gray">
-                        <Image src={svgUrl}
-                            alt={decal.title}
+                        <Image
+                            src={svgUrl}
+                            alt={decal.title ?? ""}
                             width={600}
                             height={400}
                             unoptimized={true}
@@ -63,6 +70,19 @@ export function DecalModal(
                             />
                         </a>
                     </div>
+
+                    <span>{decal.comment}</span>
+
+                    <div>
+                        {...keywords.map(keyword => ( <span className="mr-2 bg-slate-800">{keyword}</span> ))}
+                    </div>
+
+                    <span>{decal.create_time.toString()}</span>
+
+                    <div className="w-1/2 ml-4">
+                        <CopyTextBox text={url} />
+                    </div>
+
                 </div>
 
             </Box>

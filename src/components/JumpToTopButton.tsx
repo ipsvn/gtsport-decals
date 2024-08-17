@@ -8,7 +8,7 @@ export function JumpToTopButton() {
         <div className="fixed bottom-16 sm:right-16 right-4">
             <Fab
                 color="primary"
-                aria-label="add"
+                aria-label="jump to top"
                 className=""
                 onClick={() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });

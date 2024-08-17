@@ -5,7 +5,15 @@ import { Fragment } from "react";
 import Image from "next/image";
 import { useDecalModal } from "@/contexts/DecalModalContext";
 
-export default function DecalCard({ decal }: { decal: FullDecal }) {
+export interface DecalCardProps {
+	decal: FullDecal
+}
+
+export default function DecalCard(
+	{ 
+		decal
+	}: DecalCardProps
+) {
 	const idString = decal.id.toString();
 	const svgUrl = getDecalImageUrl(idString);
 
@@ -48,7 +56,6 @@ export default function DecalCard({ decal }: { decal: FullDecal }) {
 							</a>
 						</div>
 					</div>
-
 				</div>
 			</div>
 

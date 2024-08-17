@@ -1,13 +1,9 @@
 "use client";
 
-import { FullDecal } from "@/utils/data-utils";
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext } from "react";
 import { DecalModal } from "./DecalModal";
 import { DecalModalContext } from "@/contexts/DecalModalContext";
 
-interface DecalModalLoaderProps {
-    decal: FullDecal
-}
 
 export function DecalModalRenderer(
     

@@ -28,8 +28,6 @@ export default async function Page(
         decal = await findDecal(decalId.data) ?? undefined;
     }
 
-    console.log("loaded decal: " + inspect(decal, {colors: true}));
-
     return (
         <DecalModalProvider decal={ decal }>
             <MainPageLayout {...searchParams} />
