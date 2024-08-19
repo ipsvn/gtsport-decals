@@ -1,12 +1,18 @@
 import { Prisma } from "@prisma/client";
 
-export const decalInclude = {
-    // tags: true,
+export const decalExcludingTagsInclude = {
     user: true
 } satisfies Prisma.DecalSelect;
+export type DecalExcludingTags = Prisma.DecalGetPayload<{
+    include: typeof decalExcludingTagsInclude
+}>;
 
+export const fullDecalInclude = {
+    tags: true,
+    user: true
+} satisfies Prisma.DecalSelect;
 export type FullDecal = Prisma.DecalGetPayload<{
-    include: typeof decalInclude
+    include: typeof fullDecalInclude
 }>;
 
 export type DecalSortOption = {

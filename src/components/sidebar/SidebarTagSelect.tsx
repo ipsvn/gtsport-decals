@@ -30,7 +30,14 @@ export default function SidebarTagSelect(
 
     const values = GTSPORT_TAGS_MAP;
 
-    const [states, setStates] = useState<SelectStates>({});
+    const initialStates = () => {
+        const initialState: SelectStates = {};
+        searchParams.get('tage')?.split(",").forEach(it => initialState[it] = "excluded");
+        searchParams.get('tagr')?.split(",").forEach(it => initialState[it] = "required");
+        return initialState;
+    };
+
+    const [states, setStates] = useState<SelectStates>(initialStates);
 
     const passedStates = Object.keys(states).filter(it => states[it] != "neutral");
 

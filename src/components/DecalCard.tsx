@@ -1,12 +1,12 @@
 import downloadIcon from "/public/download.svg";
-import { FullDecal } from "@/utils/data-utils";
+import { DecalExcludingTags } from "@/utils/data-utils";
 import { getDecalImageUrl } from "@/utils/utils";
 import { Fragment } from "react";
 import Image from "next/image";
 import { useDecalModal } from "@/contexts/DecalModalContext";
 
 export interface DecalCardProps {
-	decal: FullDecal
+	decal: DecalExcludingTags
 }
 
 export default function DecalCard(

@@ -1,8 +1,10 @@
 import prisma from "./prisma";
 import { 
-    decalInclude, 
+    decalExcludingTagsInclude, 
     DecalSortOption, 
     decalSortOptions, 
+    DecalExcludingTags,
+    fullDecalInclude,
     FullDecal
 } from "@/utils/data-utils";
 
@@ -26,7 +28,7 @@ export async function findDecal(
         where: {
             id: id
         },
-        include: decalInclude
+        include: fullDecalInclude
     });
 
     return result;
@@ -37,7 +39,7 @@ export async function findDecal(
 export async function searchDecals(
     query: string,
     options: SearchDecalsOptions = {}
-): Promise<FullDecal[]> {
+): Promise<DecalExcludingTags[]> {
 
     const max = options.max ?? 50;
     const sort = options.sort ?? decalSortOptions.default
@@ -78,7 +80,7 @@ export async function searchDecals(
             ...(creator && { user: { name: { equals: creator } } })
         },
         orderBy: sort.prismaOrder,
-        include: decalInclude,
+        include: decalExcludingTagsInclude,
         take: max
     });
 

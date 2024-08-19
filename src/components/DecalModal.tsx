@@ -1,17 +1,18 @@
 import downloadIcon from "/public/download.svg";
 import Image from "next/image";
-import { FullDecal } from "@/utils/data-utils";
+import { DecalExcludingTags, FullDecal } from "@/utils/data-utils";
 import { getDecalImageUrl } from "@/utils/utils";
 import { CopyTextBox } from "./CopyTextBox";
 
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
+import { GTSPORT_TAGS_MAP } from "@/constants";
 
 export interface DecalModalProps {
     open: boolean,
     handleClose: () => void
-    decal: FullDecal
+    decal: FullDecal | DecalExcludingTags
 }
 
 export function DecalModal(
@@ -32,6 +33,10 @@ export function DecalModal(
 
     const keywordTrim = decal.keyword?.trim();
     const keywords = keywordTrim ? keywordTrim.split(" ") : [];
+
+    const tags = (decal as FullDecal).tags !== undefined
+        ? (decal as FullDecal).tags.map(t => t.tag)
+        : undefined;
 
     return (
         <Modal
@@ -78,7 +83,7 @@ export function DecalModal(
                         <span>{decal.comment}</span>
 
                         <div>
-                            {...keywords.map(keyword => (
+                            {...keywords.map(keyword => ( 
                                 <span
                                     className="mr-2 bg-slate-800"
                                     key={keyword}
@@ -88,6 +93,20 @@ export function DecalModal(
                             ))}
                         </div>
 
+                        {tags && (
+                            <div>
+                                Tags
+                                {...tags.map(tag => (
+                                    <span
+                                        className="mr-2 bg-slate-800"
+                                        key={tag}
+                                    >
+                                        {GTSPORT_TAGS_MAP[tag]}
+                                    </span>
+                                ))}
+                            </div>
+
+                        )}
                         <span>{decal.create_time.toString()}</span>
 
                         <div className="w-1/2">

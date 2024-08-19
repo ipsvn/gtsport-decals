@@ -1,21 +1,22 @@
 "use client";
 
-import { FullDecal } from '@/utils/data-utils';
+import { DecalExcludingTags, FullDecal } from '@/utils/data-utils';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
 
+export type DecalType = FullDecal | DecalExcludingTags | undefined;
+
 export type DecalModalContextValue = {
-    decal: FullDecal | undefined,
-    setDecal: Dispatch<SetStateAction<FullDecal | undefined>>
+    decal: DecalType,
+    setDecal: Dispatch<SetStateAction<DecalType>>
 };
 
 export const DecalModalContext = createContext<DecalModalContextValue | undefined>(undefined);
 
-export const DecalModalProvider = ({ decal, children }: { decal: FullDecal | undefined, children: ReactNode }) => {
+export const DecalModalProvider = ({ decal, children }: { decal: DecalType, children: ReactNode }) => {
 
     const searchParams = useSearchParams();
     const pathname = usePathname();
-    const { replace } = useRouter();
 
     const [decalState, setDecalState] = useState(decal);
 
@@ -27,7 +28,6 @@ export const DecalModalProvider = ({ decal, children }: { decal: FullDecal | und
         } else {
             params.delete('decal');
         }
-        // replace(`${pathname}?${params.toString()}`);
         history.pushState(null, '', `${pathname}?${params.toString()}`);
 
     }, [decalState]);
