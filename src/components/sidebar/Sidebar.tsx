@@ -1,5 +1,6 @@
 import SidebarCreatorAutocomplete from "./SidebarCreatorAutocomplete";
 import SidebarSortSelect from "./SidebarSortSelect";
+import SidebarTagSelect from "./SidebarTagSelect";
 
 export default function Sidebar() {
     return (
@@ -16,6 +17,7 @@ export default function Sidebar() {
                         <input type="text" id="upload-date-end" name="upload-date-end" className="border-border-gray border-2 bg-dark-gray rounded py-2 px-3 w-full" placeholder="01/01/2024" />
                     </div>
                 </div> */}
+                <SidebarTagSelect />
             </div>
             <div className="flex flex-col py-4 gap-2 border-t-2 border-t-border-gray">
                 <span className="text-white">Database rescued by Bornhall</span>

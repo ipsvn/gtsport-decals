@@ -13,6 +13,10 @@ export interface MainPageLayoutParams {
     query?: string;
     creator?: string;
     sort?: string;
+
+    // Tag selection
+    tage?: string;
+    tagr?: string;
 };
 
 export async function MainPageLayout(
@@ -22,16 +26,24 @@ export async function MainPageLayout(
     const query = params?.query || '';
     const creator = params?.creator;
     const sort = (params?.sort || "default") as keyof typeof decalSortOptions;
+    const tage = params.tage?.split(",");
+    const tagr = params.tagr?.split(",");
+
+    
     const data = await searchDecals(query, {
         max: DECAL_MAX_RESULTS,
         creator,
-        sort: decalSortOptions[sort]
+        sort: decalSortOptions[sort],
+        exclude_tags: tage,
+        require_tags: tagr
     });
 
     const decalListKey = JSON.stringify({
         query,
         creator,
-        sort
+        sort,
+        tage,
+        tagr
     });
 
     return (

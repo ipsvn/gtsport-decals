@@ -12,7 +12,10 @@ interface SearchDecalsOptions {
     max?: number,
     after?: DecalCursorType,
     creator?: string | null | undefined,
-    sort?: DecalSortOption
+    sort?: DecalSortOption,
+
+    exclude_tags?: string[],
+    require_tags?: string[]
 }
 
 export async function findDecal(
@@ -42,6 +45,9 @@ export async function searchDecals(
         after, creator
     } = options;
 
+    const exclude_tags = options.exclude_tags;
+    const require_tags = options.require_tags;
+
     const results = await prisma.decal.findMany({
         where: {
             ...(after && { id: { gt: after } }),
@@ -58,6 +64,16 @@ export async function searchDecals(
                     },
                 }
             ],
+
+            AND: [
+                ...(require_tags?.map(t => ({ tags: { some: { tag: t } } })) ?? [])
+            ],
+
+            NOT: {
+                AND: [
+                    ...(exclude_tags?.map(t => ({ tags: { some: { tag: t } } })) ?? [])
+                ]
+            },
 
             ...(creator && { user: { name: { equals: creator } } })
         },
