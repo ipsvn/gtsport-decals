@@ -78,12 +78,6 @@ export default function SidebarTagSelect(
     const renderValue = (selected: typeof passedStates) => (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
             {...selected.map(it => (
-                // <span
-                //     key={it}
-                //     className={states[it] == "excluded" ? "text-red-700" : "text-lime-600"}
-                // >
-                //     {values[it]}
-                // </span>
                 <Chip color={states[it] == "excluded" ? "error" : "success"} key={it} label={values[it]} />
             ))}
         </Box>

@@ -1,9 +1,3 @@
-// import * as React from 'react';
-// import Box from '@mui/material/Box';
-// import Checkbox from '@mui/material/Checkbox';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import { useState } from 'react';
-
 import { Checkbox } from "@mui/material";
 
 export type ExcludeCheckboxState = "neutral" | "required" | "excluded";
@@ -34,31 +28,3 @@ export function ExcludeCheckbox(
     );
 
 }
-
-// export interface ExcludeCheckboxProps {
-
-// }
-
-// export function ExcludeCheckbox() {
-//     const [state, setState] = useState<ExcludeCheckboxState>("neutral");
-
-//     const handleChange = () => {
-//         setState(nextCheckboxState[state]);
-//     };
-
-//     return (
-//         <div>
-//             <FormControlLabel
-//                 label="Parent"
-//                 control={
-//                     <Checkbox
-//                         checked={state == "required"}
-//                         indeterminate={state == "excluded"}
-//                         onChange={handleChange}
-//                     />
-//                 }
-//             />
-
-//         </div>
-//     );
-// }
