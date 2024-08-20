@@ -50,7 +50,7 @@ export function DecalModal(
                 className="container-modal outline-none absolute top-1/2 -translate-y-1/2 h-full max-h-[48rem]"
             >
 
-                <div className="bg-dark-gray flex flex-col h-full">
+                <div className="bg-dark-gray flex flex-col h-full overflow-y-scroll">
                     <div className="flex items-center justify-center w-full h-min bg-light-gray">
                         <Image
                             src={svgUrl}
@@ -64,54 +64,91 @@ export function DecalModal(
                     </div>
 
                     <div className="flex flex-col w-full p-4 lg:p-8">
-                        <h3 className="text-white text-3xl font-bold word-break">
-                            {decal.title}
-                        </h3>
-                        <p className="text">
-                            By:{" "}
-                            <a href={`/?creator=${decal.user.name}`}>
-                                {decal.user.name}
-                            </a>
-                        </p>
-                        <a href={svgUrl} className="size-5 flex-shrink-0" target="_blank" download={`${decal.title} - ${idString}`}>
+                        <div className="lg:flex justify-between">
+                            <div className="flex flex-col">
+                                <h3 className="text-white text-3xl font-bold word-break">
+                                    {decal.title}
+                                </h3>
+                                <p className="text">
+                                    By:{" "}
+                                    <a href={`/?creator=${decal.user.name}`}>
+                                        {decal.user.name}
+                                    </a>
+                                </p>
+                            </div>
+                            <div className="lg:w-1/2">
+                                <CopyTextBox text={url} />
+                            </div>
+                        </div>
+                        {/* <a href={svgUrl} className="size-5 flex-shrink-0" target="_blank" download={`${decal.title} - ${idString}`}>
                             <Image
                                 src={downloadIcon}
                                 alt="Download icon"
                             />
-                        </a>
+                        </a> */}
 
-                        <span>{decal.comment}</span>
-
-                        <div>
-                            {...keywords.map(keyword => ( 
-                                <span
-                                    className="mr-2 bg-slate-800"
-                                    key={keyword}
-                                >
-                                    {keyword}
-                                </span>
-                            ))}
-                        </div>
-
-                        {tags && (
+                        <div className="grid lg:grid-cols-2">
                             <div>
-                                Tags
-                                {...tags.map(tag => (
-                                    <span
-                                        className="mr-2 bg-slate-800"
-                                        key={tag}
-                                    >
-                                        {GTSPORT_TAGS_MAP[tag]}
+                                <div className="mt-2">
+                                    <h1 className="text-white">
+                                        Comment
+                                    </h1>
+                                    <span>
+                                        {decal.comment}
                                     </span>
-                                ))}
+                                </div>
+
+
+                                <div className="mt-2">
+                                    <h1 className="text-white">
+                                        Created at
+                                    </h1>
+                                    <span>
+                                        {decal.create_time.toLocaleDateString()} {decal.create_time.toLocaleTimeString()}
+                                    </span>
+                                </div>
                             </div>
+                            <div>
+                                <div>
+                                    <h1 className="text-white">
+                                        Keywords
+                                    </h1>
+                                    {keywords.length > 0 ? keywords.map(keyword => (
+                                        <span
+                                            className="mr-2 bg-slate-800"
+                                            key={keyword}
+                                        >
+                                            {keyword}
+                                        </span>
+                                    )) : (
+                                        <span className="text-neutral-500 text-sm">
+                                            No keywords
+                                        </span>
+                                    )}
+                                </div>
 
-                        )}
-                        <span>{decal.create_time.toString()}</span>
+                                <div className="mt-2">
+                                    <h1 className="text-white">
+                                        Tags
+                                    </h1>
+                                    {tags ? tags.map(tag => (
+                                        <span
+                                            className="mr-2 bg-slate-800"
+                                            key={tag}
+                                        >
+                                            {GTSPORT_TAGS_MAP[tag]}
+                                        </span>
+                                    )) : (
+                                        <span className="text-neutral-500 text-sm">
+                                            No tags
+                                        </span>
+                                    )}
+                                </div>
 
-                        <div className="w-1/2">
-                            <CopyTextBox text={url} />
+                                
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
