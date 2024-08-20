@@ -1,6 +1,4 @@
-import { findDecal, searchDecals } from "@/lib/data";
-import { decalSortOptions } from "@/utils/data-utils";
-import { DECAL_MAX_RESULTS } from "@/constants";
+import { findDecal } from "@/lib/data";
 
 import { NextRequest } from "next/server";
 import { z } from "zod";
@@ -11,7 +9,7 @@ const schema = z.object({
 });
 
 export async function GET(
-    request: NextRequest,
+    _: NextRequest,
     { params }: { params: { id: string } }
 ) {   
 
