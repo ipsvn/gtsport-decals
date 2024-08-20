@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .container {
-  @apply px-6 lg:px-10 xl:px-16 max-w-[84rem] mx-auto;
+  @apply relative px-6 lg:px-10 xl:px-16 max-w-[84rem] mx-auto;
 }
 
-.word-break {
-	word-break: break-word;
+.container-modal {
+  @apply relative px-6 lg:px-0 xl:max-w-4xl max-w-3xl mx-auto;
 }

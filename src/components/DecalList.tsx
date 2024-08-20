@@ -1,6 +1,6 @@
 "use client";
 
-import { decalSortOptions, FullDecal } from "@/utils/data-utils";
+import { decalSortOptions, DecalExcludingTags } from "@/utils/data-utils";
 import { DECAL_MAX_RESULTS } from "@/constants";
 
 import { useState } from "react";
@@ -13,7 +13,7 @@ interface DecalListProps {
     query: string,
     creator: string | undefined,
     sort: keyof typeof decalSortOptions,
-    decals: FullDecal[]
+    decals: DecalExcludingTags[]
 }
 
 export default function DecalList(
@@ -40,7 +40,7 @@ export default function DecalList(
 
         const response = await fetch("/api/decals/search?" + params.toString());
         const json = await response.json();
-        const results = json.results as FullDecal[];
+        const results = json.results as DecalExcludingTags[];
 
         if (results.length < DECAL_MAX_RESULTS) {
             setSaturated(true);
