@@ -61,7 +61,7 @@ export function DecalModal(
 
         })();
 
-    }, [loaded, loading]);
+    }, [loaded, loading, decal.id]);
 
     const [url, setUrl] = useState("");
     useEffect(() => {
