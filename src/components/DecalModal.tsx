@@ -19,14 +19,11 @@ export function DecalModal(
     {
         open,
         handleClose,
-        decal
+        decal: initialDecal
     }: DecalModalProps
 ) {
 
-    const [url, setUrl] = useState("");
-    useEffect(() => {
-        setUrl(window.location.origin + "?decal=" + decal.id);
-    }, [decal.id]);
+    const [decal, setDecal] = useState(initialDecal);
 
     const idString = decal.id.toString();
     const svgUrl = getDecalImageUrl(idString);
@@ -37,6 +34,35 @@ export function DecalModal(
     const tags = (decal as FullDecal).tags !== undefined
         ? (decal as FullDecal).tags.map(t => t.tag)
         : undefined;
+
+    const create_time = new Date(decal.create_time);
+
+    const [loaded, setLoaded] = useState(tags !== undefined);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        
+        if (loaded) return;
+
+        (async () => {
+        
+            setLoading(true);
+
+            const response = await fetch(`/api/decals/${decal.id}`);
+            const json = await response.json();
+            const result = json.result as FullDecal;
+            setDecal(result);
+            setLoaded(true);
+            setLoading(false);
+
+        })();
+
+    }, [loaded]);
+
+    const [url, setUrl] = useState("");
+    useEffect(() => {
+        setUrl(window.location.origin + "?decal=" + decal.id);
+    }, [decal.id]);
 
     return (
         <Modal
@@ -104,7 +130,7 @@ export function DecalModal(
                                         Created at
                                     </h1>
                                     <span>
-                                        {decal.create_time.toLocaleDateString()} {decal.create_time.toLocaleTimeString()}
+                                        {create_time.toLocaleDateString()} {create_time.toLocaleTimeString()}
                                     </span>
                                 </div>
                             </div>

@@ -10,5 +10,6 @@ export const ParseBigInt = (value: string, ctx: z.RefinementCtx) => {
             received: "nan",
             message: `Error parsing BigInt`,
         });
+        return z.NEVER;
     }
 }

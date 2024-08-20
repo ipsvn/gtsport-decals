@@ -8,7 +8,11 @@ export type DecalExcludingTags = Prisma.DecalGetPayload<{
 }>;
 
 export const fullDecalInclude = {
-    tags: true,
+    tags: {
+        select: {
+            tag: true
+        }
+    },
     user: true
 } satisfies Prisma.DecalSelect;
 export type FullDecal = Prisma.DecalGetPayload<{
