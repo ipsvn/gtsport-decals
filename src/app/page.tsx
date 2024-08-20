@@ -2,9 +2,8 @@ import { DecalModalRenderer } from "@/components/DecalModalRenderer";
 import { MainPageLayout, MainPageLayoutParams } from "@/components/page/MainPageLayout";
 import { DecalModalProvider } from "@/contexts/DecalModalContext";
 import { findDecal } from "@/lib/data";
-import { DecalExcludingTags, FullDecal } from "@/utils/data-utils";
+import { FullDecal } from "@/utils/data-utils";
 import { ParseBigInt } from "@/zod-utils";
-import { inspect } from "util";
 import { z } from "zod";
 
 const decalSchema = z.string().transform(ParseBigInt).nullable();

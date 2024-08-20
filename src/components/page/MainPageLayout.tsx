@@ -47,7 +47,7 @@ export async function MainPageLayout(
     });
 
     return (
-        <main className="relative bg-dark-gray min-h-screen h-full text-white font-sans">
+        <main className="relative min-h-screen h-full font-sans">
 
             <div className="sticky top-0 z-50 bg-dark-gray w-full border-b-2 border-b-border-gray">
                 <Search></Search>
