@@ -42,7 +42,7 @@ export default function DecalCard(
 							role="button"
 							onClick={handleModalOpen}
 						>
-							<h3 className="text-2xl font-medium word-break">
+							<h3 className="text-2xl font-medium break-words">
 								{decal.title}
 							</h3>
 						</a>

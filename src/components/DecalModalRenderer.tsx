@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useContext } from "react";
-import { DecalModal } from "./DecalModal";
+import { DecalModal } from "./decal-modal/DecalModal";
 import { DecalModalContext } from "@/contexts/DecalModalContext";
 
 

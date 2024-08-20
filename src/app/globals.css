@@ -9,7 +9,3 @@
 .container-modal {
   @apply relative px-6 lg:px-0 xl:max-w-4xl max-w-3xl mx-auto;
 }
-
-.word-break {
-	word-break: break-word;
-}
