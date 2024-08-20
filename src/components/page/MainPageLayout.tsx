@@ -8,6 +8,7 @@ import Sidebar from "../sidebar/Sidebar";
 import DecalList from "../DecalList";
 import Footer from "../Footer";
 import { JumpToTopButton } from "../JumpToTopButton";
+import { filterTagParam } from "@/utils/gtsport-tags";
 
 export interface MainPageLayoutParams {
     query?: string;
@@ -26,9 +27,8 @@ export async function MainPageLayout(
     const query = params?.query || '';
     const creator = params?.creator;
     const sort = (params?.sort || "default") as keyof typeof decalSortOptions;
-    const tage = params.tage?.split(",");
-    const tagr = params.tagr?.split(",");
-
+    const tage = params.tage ? filterTagParam(params.tage) : undefined;
+    const tagr = params.tagr ? filterTagParam(params.tagr) : undefined;
     
     const data = await searchDecals(query, {
         max: DECAL_MAX_RESULTS,

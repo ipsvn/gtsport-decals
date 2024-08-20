@@ -1,16 +1,16 @@
 "use client";
 
-import { GTSPORT_TAGS_MAP } from "@/constants";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { ExcludeCheckbox, ExcludeCheckboxState, nextCheckboxState } from "../exclude/ExcludeCheckbox";
 import { Box, Chip } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { GTSPORT_TAGS_MAP } from "@/utils/gtsport-tags";
 
 interface SidebarTagSelectProps {
 
@@ -32,8 +32,8 @@ export default function SidebarTagSelect(
 
     const initialStates = () => {
         const initialState: SelectStates = {};
-        searchParams.get('tage')?.split(",").forEach(it => initialState[it] = "excluded");
-        searchParams.get('tagr')?.split(",").forEach(it => initialState[it] = "required");
+        searchParams.get('tage')?.split(",").filter(it => values[it]).forEach(it => initialState[it] = "excluded");
+        searchParams.get('tagr')?.split(",").filter(it => values[it]).forEach(it => initialState[it] = "required");
         return initialState;
     };
 

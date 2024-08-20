@@ -7,7 +7,7 @@ import { CopyTextBox } from "./CopyTextBox";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
-import { GTSPORT_TAGS_MAP } from "@/constants";
+import { GTSPORT_TAGS_MAP } from "@/utils/gtsport-tags";
 
 export interface DecalModalProps {
     open: boolean,
@@ -26,7 +26,7 @@ export function DecalModal(
     const [url, setUrl] = useState("");
     useEffect(() => {
         setUrl(window.location.origin + "?decal=" + decal.id);
-    }, []);
+    }, [decal.id]);
 
     const idString = decal.id.toString();
     const svgUrl = getDecalImageUrl(idString);

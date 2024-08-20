@@ -72,7 +72,7 @@ export async function searchDecals(
             ],
 
             NOT: {
-                AND: [
+                OR: [
                     ...(exclude_tags?.map(t => ({ tags: { some: { tag: t } } })) ?? [])
                 ]
             },

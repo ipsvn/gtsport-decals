@@ -1,7 +1,7 @@
 "use client";
 
 import { DecalExcludingTags, FullDecal } from '@/utils/data-utils';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
 
 export type DecalType = FullDecal | DecalExcludingTags | undefined;
@@ -30,7 +30,7 @@ export const DecalModalProvider = ({ decal, children }: { decal: DecalType, chil
         }
         history.pushState(null, '', `${pathname}?${params.toString()}`);
 
-    }, [decalState]);
+    }, [decalState, pathname, searchParams]);
 
     return (
         <DecalModalContext.Provider value={{ decal: decalState, setDecal: setDecalState }}>
