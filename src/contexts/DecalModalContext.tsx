@@ -28,7 +28,11 @@ export const DecalModalProvider = ({ decal, children }: { decal: DecalType, chil
         } else {
             params.delete('decal');
         }
-        history.pushState(null, '', `${pathname}?${params.toString()}`);
+
+        // only update if decal actually changes
+        if (searchParams.get('decal') !== params.get('decal')) {
+            history.pushState(null, '', `${pathname}?${params.toString()}`);
+        }
 
     }, [decalState, pathname, searchParams]);
 
