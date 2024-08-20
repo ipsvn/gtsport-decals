@@ -3,6 +3,8 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
+import CloseIcon from '@mui/icons-material/Close';
+
 export default function Search() {
 
     const searchParams = useSearchParams();
@@ -40,7 +42,7 @@ export default function Search() {
                     className="p-4"
                     onClick={() => handleSearch("")}
                 >
-                    X
+                    <CloseIcon />
                 </button>
             </div>
         </div>

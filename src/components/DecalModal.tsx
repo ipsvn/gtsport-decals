@@ -4,6 +4,7 @@ import { DecalExcludingTags, FullDecal } from "@/utils/data-utils";
 import { getDecalImageUrl } from "@/utils/utils";
 import { CopyTextBox } from "./CopyTextBox";
 
+import CloseIcon from '@mui/icons-material/Close';
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
@@ -41,11 +42,11 @@ export function DecalModal(
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        
-        if (loaded) return;
+
+        if (loaded || loading) return;
 
         (async () => {
-        
+
             setLoading(true);
 
             const response = await fetch(`/api/decals/${decal.id}`);
@@ -57,7 +58,7 @@ export function DecalModal(
 
         })();
 
-    }, [loaded]);
+    }, [loaded, loading]);
 
     const [url, setUrl] = useState("");
     useEffect(() => {
@@ -77,7 +78,13 @@ export function DecalModal(
             >
 
                 <div className="bg-dark-gray flex flex-col h-full overflow-y-scroll">
-                    <div className="flex items-center justify-center w-full h-min bg-light-gray">
+                    <div className="relative w-full h-min bg-light-gray">
+                        <button
+                            className="absolute top-2 right-2 text-black p-2"
+                            onClick={handleClose} // Add your click handler function here
+                        >
+                            <CloseIcon />
+                        </button>
                         <Image
                             src={svgUrl}
                             alt={decal.title ?? ""}
@@ -85,7 +92,7 @@ export function DecalModal(
                             height={400}
                             unoptimized={true}
                             style={{ objectFit: 'contain' }}
-                            className="aspect-3/2"
+                            className="aspect-3/2 m-auto"
                         />
                     </div>
 
@@ -171,7 +178,7 @@ export function DecalModal(
                                     )}
                                 </div>
 
-                                
+
                             </div>
                         </div>
 
