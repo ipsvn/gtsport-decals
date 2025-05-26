@@ -8,7 +8,7 @@ export default function Footer() {
             <div className="container">
                 <div className="flex flex-col gap-2 sm:flex-row justify-between">
                     <div className="flex flex-col gap-2 p-4">
-                        <a href="https://discord.gg/amworkshop" target="_blank" className="flex gap-2 items-center text-white font-medium">
+                        <a href="https://discord.gg/de4tdYGRvY" target="_blank" className="flex gap-2 items-center text-white font-medium">
                             <Image
                                 src={discordLogo}
                                 alt="Discord"
