@@ -74,6 +74,8 @@ async function main() {
         
     }
 
+    await prisma.$transaction(batch);
+
 }
 
 main()

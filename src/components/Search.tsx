@@ -8,6 +8,9 @@ import LogoUrl from "/public/automod_logo_amws_border.svg";
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from "react";
 
+import LogoUrl from "/public/automod_logo_amws_border.svg";
+import Image from "next/image";
+
 export default function Search() {
 
     const searchParams = useSearchParams();
@@ -27,7 +30,7 @@ export default function Search() {
         replace(`${pathname}?${params.toString()}`);
     };
     const debounceSearchParams = useDebouncedCallback(
-        (value: string) => replaceSearchParams(value), 
+        (value: string) => replaceSearchParams(value),
         500
     );
 
@@ -40,19 +43,21 @@ export default function Search() {
         setQuery("");
         replaceSearchParams("");
     };
-    
+
     return (
         <div className="container flex justify-between gap-4">
-            <div className="w-full flex gap-8 p-4">
+            <div className="w-full flex gap-2 p-4">
 
-                <Image src={LogoUrl} alt="Logo" width={48} />
+                <Image src={LogoUrl} alt="Logo" className="w-[48px] h-[28px]" />
 
                 <div>
                     <input
-                        className="bg-transparent w-full p-4 outline-none text-xl"
-                        value={query}
+                        className="bg-transparent w-full outline-none text-xl px-4"
+                        defaultValue={param}
                         placeholder="Search"
-                        onChange={(e) => handleSearch(e.target.value)}
+                        onChange={(e) => {
+                            handleSearch(e.target.value);
+                        }}
                     />
                 </div>
             </div>
