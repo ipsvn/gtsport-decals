@@ -48,7 +48,7 @@ export default function Search() {
 
                 <Image src={LogoUrl} alt="Logo" className="w-[48px] h-[28px]" />
 
-                <div>
+                <div className="w-full">
                     <input
                         className="bg-transparent w-full outline-none text-xl px-4"
                         defaultValue={param}
