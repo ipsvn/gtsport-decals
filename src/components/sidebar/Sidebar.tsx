@@ -4,7 +4,7 @@ import SidebarTagSelect from "./SidebarTagSelect";
 
 export default function Sidebar() {
     return (
-        <div className="hidden md:flex flex-col justify-between gap-4 w-1/4 pr-8 mr-4 border-r-2 border-r-border-gray py-4 sticky top-[62px] h-[calc(100vh-124px)] font-sans">
+        <div className="hidden md:flex flex-col flex-shrink-0 justify-between gap-4 w-1/4 pr-8 mr-4 border-r-2 border-r-border-gray py-4 sticky top-[62px] h-[calc(100vh-124px)] font-sans">
             <div className="flex flex-col gap-2">
                 <h2 className="text-lg font-bold">Sort</h2>
                 <SidebarSortSelect />

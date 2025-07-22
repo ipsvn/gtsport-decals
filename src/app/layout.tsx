@@ -9,6 +9,9 @@ import { ThemeProvider } from '@mui/material/styles';
 export const metadata: Metadata = {
   title: "Gran Turismo Sport - Decals",
   description: "Search the GT Sport decal database",
+  icons: {
+        icon: '/automod_logo_amws_crop_pcs.svg',
+    }
 };
 
 export default function RootLayout({

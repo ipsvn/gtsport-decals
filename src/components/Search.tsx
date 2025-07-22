@@ -7,8 +7,6 @@ import LogoUrl from "/public/automod_logo_amws_border.svg";
 
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from "react";
-
-import LogoUrl from "/public/automod_logo_amws_border.svg";
 import Image from "next/image";
 
 export default function Search() {
