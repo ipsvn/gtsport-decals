@@ -3,7 +3,10 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
+import LogoUrl from "/public/automod_logo_amws_border.svg";
+
 import CloseIcon from '@mui/icons-material/Close';
+import Image from "next/image";
 
 export default function Search() {
 
@@ -25,10 +28,13 @@ export default function Search() {
     
     return (
         <div className="container flex justify-between gap-4">
-            <div className="w-full">
+            <div className="w-full flex gap-8 p-4">
+
+                <Image src={LogoUrl} alt="Logo" width={48} />
+
                 <div>
                     <input
-                        className="bg-transparent w-full p-4 outline-none text-xl"
+                        className="bg-transparent w-full outline-none text-xl px-4"
                         defaultValue={param}
                         placeholder="Search"
                         onChange={(e) => {
