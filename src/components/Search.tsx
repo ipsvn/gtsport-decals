@@ -6,7 +6,7 @@ import { useDebouncedCallback } from "use-debounce";
 import LogoUrl from "/public/automod_logo_amws_border.svg";
 
 import CloseIcon from '@mui/icons-material/Close';
-import Image from "next/image";
+import { useState } from "react";
 
 export default function Search() {
 
@@ -15,8 +15,9 @@ export default function Search() {
     const { replace } = useRouter();
 
     const param = searchParams.get('query')?.toString();
+    const [query, setQuery] = useState(param);
 
-    const handleSearch = useDebouncedCallback((value: string) => {
+    const replaceSearchParams = (value: string) => {
         const params = new URLSearchParams(searchParams);
         if (value.length != 0) {
             params.set('query', value);
@@ -24,7 +25,21 @@ export default function Search() {
             params.delete('query');
         }
         replace(`${pathname}?${params.toString()}`);
-    }, 500);
+    };
+    const debounceSearchParams = useDebouncedCallback(
+        (value: string) => replaceSearchParams(value), 
+        500
+    );
+
+    const handleSearch = (value: string) => {
+        setQuery(value);
+        debounceSearchParams(value);
+    };
+
+    const clearSearch = () => {
+        setQuery("");
+        replaceSearchParams("");
+    };
     
     return (
         <div className="container flex justify-between gap-4">
@@ -34,19 +49,17 @@ export default function Search() {
 
                 <div>
                     <input
-                        className="bg-transparent w-full outline-none text-xl px-4"
-                        defaultValue={param}
+                        className="bg-transparent w-full p-4 outline-none text-xl"
+                        value={query}
                         placeholder="Search"
-                        onChange={(e) => {
-                            handleSearch(e.target.value);
-                        }}
+                        onChange={(e) => handleSearch(e.target.value)}
                     />
                 </div>
             </div>
             <div>
                 <button
                     className="p-4"
-                    onClick={() => handleSearch("")}
+                    onClick={clearSearch}
                 >
                     <CloseIcon />
                 </button>
