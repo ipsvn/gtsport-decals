@@ -46,7 +46,9 @@ export default function Search() {
         <div className="container flex justify-between gap-4">
             <div className="w-full flex gap-2 p-4">
 
-                <Image src={LogoUrl} alt="Logo" className="w-[48px] h-[28px]" />
+                <a href="https://automod.club" target="_blank" title="Automod Workshop">
+                    <Image src={LogoUrl} alt="Logo" className="w-[48px] h-[28px]" />
+                </a>
 
                 <div className="w-full">
                     <input
