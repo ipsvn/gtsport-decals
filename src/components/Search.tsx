@@ -16,7 +16,7 @@ export default function Search() {
     const { replace } = useRouter();
 
     const param = searchParams.get('query')?.toString();
-    const [query, setQuery] = useState(param);
+    const [query, setQuery] = useState(param ?? "");
 
     const replaceSearchParams = (value: string) => {
         const params = new URLSearchParams(searchParams);
@@ -51,7 +51,7 @@ export default function Search() {
                 <div className="w-full">
                     <input
                         className="bg-transparent w-full outline-none text-xl px-4"
-                        defaultValue={query}
+                        value={query}
                         placeholder="Search"
                         onChange={(e) => {
                             handleSearch(e.target.value);
