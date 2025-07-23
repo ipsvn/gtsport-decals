@@ -51,7 +51,7 @@ export default function Search() {
                 <div className="w-full">
                     <input
                         className="bg-transparent w-full outline-none text-xl px-4"
-                        value={query}
+                        defaultValue={query}
                         placeholder="Search"
                         onChange={(e) => {
                             handleSearch(e.target.value);
