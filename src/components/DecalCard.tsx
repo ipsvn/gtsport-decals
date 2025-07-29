@@ -48,7 +48,7 @@ export default function DecalCard(
 						</a>
 						<div className="flex justify-between w-full">
 							<p className="text">By: {decal.user.name}</p>
-							<a href={svgUrl} className="size-5 flex-shrink-0" target="_blank" download={`${decal.title} - ${idString}`}>
+							<a href={svgUrl} className="size-5 flex-shrink-0" target="_blank" download={`${decal.title} - ${idString}.svg`}>
 								<Image
 									src={downloadIcon}
 									alt="Download icon"
