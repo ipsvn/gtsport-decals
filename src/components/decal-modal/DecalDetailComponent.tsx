@@ -29,14 +29,14 @@ export function DecalDetailComponent<T>(
 
     const child =
         loading ?? false
-            ? (<span className="text-neutral-500 text-sm">{loadingText}</span>)
+            ? (<span className="text-zinc-500 text-sm">{loadingText}</span>)
             : !hasData || !data
-                ? (<span className="text-neutral-500 text-sm">{noDataText}</span>)
+                ? (<span className="text-zinc-500 text-sm">{noDataText}</span>)
                 : renderChild(data);
 
     return (
         <div className={className}>
-            <h1 className="text-white">
+            <h1 className="text-white font-bold font-syncopate uppercase">
                 {title}
             </h1>
 

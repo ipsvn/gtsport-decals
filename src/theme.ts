@@ -1,7 +1,6 @@
 "use client";
 
 import { createTheme } from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -32,7 +31,9 @@ declare module '@mui/material/IconButton' {
 const theme = createTheme({
   palette: {
     mode: "dark",
-    primary: purple,
+    primary: {
+      main: '#6b7fd7',
+    },
     secondary: {
       light: '#ff7961',
       main: '#f44336',

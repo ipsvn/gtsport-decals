@@ -29,7 +29,7 @@ export async function MainPageLayout(
     const sort = (params?.sort || "default") as keyof typeof decalSortOptions;
     const tage = params.tage ? filterTagParam(params.tage) : undefined;
     const tagr = params.tagr ? filterTagParam(params.tagr) : undefined;
-    
+
     const data = await searchDecals(query, {
         max: DECAL_MAX_RESULTS,
         creator,
@@ -47,9 +47,9 @@ export async function MainPageLayout(
     });
 
     return (
-        <main className="relative bg-dark-gray min-h-screen h-full text-white font-sans">
+        <main className="relative bg-black min-h-screen h-full text-white font-sans">
 
-            <div className="sticky top-0 z-50 bg-dark-gray w-full border-b-2 border-b-border-gray">
+            <div className="sticky top-0 z-50 bg-black w-full border-b border-b-white/20">
                 <Search></Search>
             </div>
 
@@ -59,7 +59,7 @@ export async function MainPageLayout(
                     <Sidebar />
 
                     <div className="w-full py-4">
-                        <h2 className="text-3xl font-bold mb-4">Results</h2>
+                        <h2 className="text-white font-medium text-2xl md:text-4xl lg:text-5xl leading-[0.9] mb-4">Results</h2>
                         <DecalList key={decalListKey} query={query} creator={creator} sort={sort} decals={data} />
                     </div>
                 </div>

@@ -15,12 +15,13 @@ const config: Config = {
         'light-gray': '#CBCBCB',
         'border-gray': '#3D3D3D',
       },
+      fontFamily: {
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
+        syncopate: ["var(--font-syncopate)", "sans-serif"],
+      },
       aspectRatio: {
         '3/2': '3 / 2',
       },
-	  fontFamily: {
-		'sans': ['degular-variable', 'sans-serif'],
-	  }
     },
   },
   plugins: [],

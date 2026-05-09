@@ -80,7 +80,7 @@ export function DecalModal(
                 className="container-modal outline-none absolute top-1/2 -translate-y-1/2 "
             >
 
-                <div className="bg-dark-gray flex flex-col max-h-screen overflow-y-scroll">
+                <div className="bg-black flex border-white/20 border flex-col max-h-screen overflow-y-scroll">
 
                     <div className="relative">
                         <DecalModalImage
@@ -96,7 +96,7 @@ export function DecalModal(
 
                     <div className="flex flex-col w-full p-4 lg:p-8">
                         <div className="grid lg:grid-cols-2">
-                            
+
                             <div>
                                 <h3 className="text-white text-3xl font-bold break-words">
                                     {decal.title}
@@ -109,9 +109,9 @@ export function DecalModal(
                                 </p>
                             </div>
 
-                            <CopyTextBox 
-                                className="h-fit" 
-                                text={url} 
+                            <CopyTextBox
+                                className="h-fit"
+                                text={url}
                             />
 
                         </div>
