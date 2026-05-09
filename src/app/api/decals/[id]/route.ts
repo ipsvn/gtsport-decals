@@ -10,10 +10,16 @@ const schema = z.object({
 
 export async function GET(
     _: NextRequest,
-    { params }: { params: { id: string } }
-) {   
+    {
+        params
+    }: {
+        params: Promise<{ id: string }>
+    }
+) {
 
-    const response = schema.safeParse(params);
+    const loadedParams = await params;
+
+    const response = schema.safeParse(loadedParams);
 
     if (!response.success) {
         const { errors } = response.error;

@@ -2,9 +2,8 @@ import { DecalModalRenderer } from "@/components/DecalModalRenderer";
 import { MainPageLayout, MainPageLayoutParams } from "@/components/page/MainPageLayout";
 import { DecalModalProvider } from "@/contexts/DecalModalContext";
 import { findDecal } from "@/lib/data";
-import { DecalExcludingTags, FullDecal } from "@/utils/data-utils";
+import {FullDecal } from "@/utils/data-utils";
 import { ParseBigInt } from "@/zod-utils";
-import { inspect } from "util";
 import { z } from "zod";
 
 const decalSchema = z.string().transform(ParseBigInt).nullable();
@@ -17,11 +16,13 @@ export default async function Page(
     {
         searchParams
     }: {
-        searchParams: PageParams
+        searchParams: Promise<PageParams>
     }
 ) {
 
-    const decalId = decalSchema.safeParse(searchParams?.decal);
+    const loadedParams = await searchParams;
+
+    const decalId = decalSchema.safeParse(loadedParams.decal);
 
     let decal: FullDecal | undefined = undefined;
     if (decalId.success && decalId.data) {
@@ -30,7 +31,7 @@ export default async function Page(
 
     return (
         <DecalModalProvider decal={ decal }>
-            <MainPageLayout {...searchParams} />
+            <MainPageLayout {...loadedParams} />
             <DecalModalRenderer />
         </DecalModalProvider>
     );

@@ -20,7 +20,7 @@ type SelectStates = { [key: string]: ExcludeCheckboxState };
 
 export default function SidebarTagSelect(
     {
-        
+
     }: SidebarTagSelectProps
 ) {
 
@@ -55,7 +55,7 @@ export default function SidebarTagSelect(
             ...states,
         };
         newStates[selected] = next;
-        
+
         setStates(newStates);
     };
 
@@ -105,12 +105,14 @@ export default function SidebarTagSelect(
                 onClose={handleClose}
                 input={<OutlinedInput label="Tag" />}
                 MenuProps={{
-                    PaperProps: {
-                        style: {
-                            maxHeight: 250,
-                            width: 250,
-                        },
-                    },
+                    slotProps: {
+                        paper: {
+                            style: {
+                                maxHeight: 250,
+                                width: 250
+                            }
+                        }
+                    }
                 }}
             >
                 {

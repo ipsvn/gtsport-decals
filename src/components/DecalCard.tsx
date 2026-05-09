@@ -1,4 +1,4 @@
-import downloadIcon from "/public/download.svg";
+import downloadIcon from "../../public/download.svg";
 import { DecalExcludingTags } from "@/utils/data-utils";
 import { getDecalImageUrl } from "@/utils/utils";
 import { Fragment } from "react";

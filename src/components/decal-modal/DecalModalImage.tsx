@@ -27,13 +27,14 @@ export function DecalModalImage(
 
     return (
         <div className={`w-full h-min transition-colors ${background.backgroundClasses}`}>
-            
+
             <Image
                 src={svgUrl}
                 alt={decal.title ?? ""}
                 width={600}
                 height={400}
                 unoptimized={true}
+                loading="eager"
                 style={{ objectFit: 'contain' }}
                 className="aspect-3/2 m-auto"
             />
@@ -61,7 +62,7 @@ export function DecalModalImage(
                     </Button>,
                 </ButtonGroup>
             </div>
-            
+
         </div>
     );
 

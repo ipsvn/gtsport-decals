@@ -3,7 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
-import LogoUrl from "/public/automod_logo_amws_border.svg";
+import LogoUrl from "../../public/automod_logo_amws_border.svg";
 
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from "react";
