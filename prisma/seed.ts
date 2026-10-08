@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 
-const { Glob } = require("glob");
-const { readFile } = require('node:fs/promises');
+import { Glob } from "glob";
+import { readFile } from "node:fs/promises";
 
 const prisma = new PrismaClient()
 
@@ -15,7 +15,7 @@ async function main() {
 
         // console.log(`parse ${match}`)
         const file = await readFile(match, { encoding: 'utf8' });
-        
+
         let json: any = {};
         try {
           json = JSON.parse(file);
@@ -71,7 +71,7 @@ async function main() {
           await prisma.$transaction(batch);
           batch = [];
         }
-        
+
     }
 
     await prisma.$transaction(batch);
