@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fix-broken-svgs": "tsx scripts/fix-broken-svgs.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
